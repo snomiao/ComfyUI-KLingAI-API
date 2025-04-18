@@ -53,10 +53,12 @@ class Client:
     @property
     def _client(self) -> httpx.Client:
         if self._is_expired:
-            base_url = "https://api.klingai.com"
+            # base_url = "https://api.klingai.com"
+            base_url = "https://comfy-api.snomiao.dev/proxy/kling"
             headers = {
                 "Content-Type": "application/json",
-                "Authorization": f"Bearer {self._token}"
+                # "Authorization": f"Bearer {self._token}"
+                "Authorization": f"Bearer COMFY_API_NODE"
             }
             timeout = httpx.Timeout(self._timeout)
             self.__client = httpx.Client(base_url=base_url, headers=headers, timeout=timeout)
